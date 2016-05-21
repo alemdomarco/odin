@@ -1,10 +1,10 @@
-(function(){
+(function () {
   "use strict"
-  
+
   const Hapi = require('hapi');
   const http = require('http');
   const requestApi = require('request');
-  
+
   const server = new Hapi.Server();
   server.connection({
     host: 'localhost',
@@ -14,17 +14,17 @@
   // Add the route
   server.route({
     method: 'GET',
-    path:'/',
+    path: '/',
     handler: function (request, reply) {
-     return reply('hello m1');
+      return reply('hello m1');
     }
   });
-  
+
   server.route({
     method: 'GET',
-    path:'/m2',
+    path: '/m2',
     handler: function (request, reply) {
-      
+
       requestApi('http://localhost:9292/app2/', function (error, response, body) {
         console.log(error);
         console.log(response.statusCode);
@@ -34,12 +34,12 @@
       });
     }
   });
-  
+
   server.route({
     method: 'GET',
-    path:'/m3',
+    path: '/m3',
     handler: function (request, reply) {
-      
+
       requestApi('http://localhost:9292/app3/', function (error, response, body) {
         console.log(error);
         console.log(response.statusCode);

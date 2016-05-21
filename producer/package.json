@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "socket.io": "^1.4.6",
-    "zmq": "^2.15.1"
+    "tail": "^1.1.0"
   }
 }
