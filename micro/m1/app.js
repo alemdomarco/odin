@@ -26,8 +26,6 @@
     handler: function (request, reply) {
 
       requestApi('http://localhost:9292/m2/', function (error, response, body) {
-        console.log(error);
-        console.log(response.statusCode);
         if (!error && response.statusCode == 200) {
           return reply(body);
         }
@@ -41,8 +39,6 @@
     handler: function (request, reply) {
 
       requestApi('http://localhost:9292/m3/', function (error, response, body) {
-        console.log(error);
-        console.log(response.statusCode);
         if (!error && response.statusCode == 200) {
           return reply(body);
         }

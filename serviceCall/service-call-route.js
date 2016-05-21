@@ -2,8 +2,13 @@
   
   "use strict"
   const Hapi = require('hapi');
+  const ServiceCallRepository = require("./service-call-repository");
   
   class ServiceCallRoute {
+    
+    constructor(){
+        this._serviceCallRepository = new ServiceCallRepository();
+    }
     
     loadRoutes(server){
       

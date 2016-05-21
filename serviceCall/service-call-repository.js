@@ -23,9 +23,6 @@
             
             this._db.cypherQuery(query, function (err, result) {
                 if (err) throw err;
-
-                console.log(result.data); // delivers an array of query results
-                console.log(result.columns); // delivers an array of names of objects getting returned
             });
           
         }

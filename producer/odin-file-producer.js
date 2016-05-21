@@ -30,7 +30,6 @@
           method: parsedDate.method
         }
         
-        console.log(odin);
         serviceCallRepository.saveServiceCallData(odin);
       });
 
