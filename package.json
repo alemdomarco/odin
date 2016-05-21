@@ -17,6 +17,7 @@
   },
   "homepage": "https://gitlab.com/maple-team/odin#README",
   "dependencies": {
+    "hapi": "^13.4.1",
     "tail": "^1.1.0"
   }
 }
