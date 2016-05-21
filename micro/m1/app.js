@@ -14,7 +14,7 @@
   // Add the route
   server.route({
     method: 'GET',
-    path: 'm1/',
+    path: '/',
     handler: function (request, reply) {
       return reply('hello m1');
     }
@@ -22,10 +22,10 @@
 
   server.route({
     method: 'GET',
-    path: 'm1/m2',
+    path: '/m2',
     handler: function (request, reply) {
 
-      requestApi('http://localhost:9292/app2/', function (error, response, body) {
+      requestApi('http://localhost:9292/m2/', function (error, response, body) {
         console.log(error);
         console.log(response.statusCode);
         if (!error && response.statusCode == 200) {
@@ -37,10 +37,10 @@
 
   server.route({
     method: 'GET',
-    path: 'm1/m3',
+    path: '/m3',
     handler: function (request, reply) {
 
-      requestApi('http://localhost:9292/app3/', function (error, response, body) {
+      requestApi('http://localhost:9292/m3/', function (error, response, body) {
         console.log(error);
         console.log(response.statusCode);
         if (!error && response.statusCode == 200) {
