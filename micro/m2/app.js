@@ -14,7 +14,7 @@
   // Add the route
   server.route({
     method: 'GET',
-    path:'/',
+    path:'m2/',
     handler: function (request, reply) {
      return reply('hello m2');
     }
