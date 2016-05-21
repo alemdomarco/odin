@@ -25,7 +25,7 @@
     path:'/m2',
     handler: function (request, reply) {
       
-      requestApi('http://localhost:9020/', function (error, response, body) {
+      requestApi('http://localhost:3001/app-m2/', function (error, response, body) {
         if (!error && response.statusCode == 200) {
           return reply(body);
         }
@@ -38,7 +38,7 @@
     path:'/m3',
     handler: function (request, reply) {
       
-      requestApi('http://localhost:9030/', function (error, response, body) {
+      requestApi('http://localhost:3001/app-m3/', function (error, response, body) {
         if (!error && response.statusCode == 200) {
           return reply(body);
         }
