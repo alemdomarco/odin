@@ -3,7 +3,7 @@
   'use strict';
 
   const hapi = require('hapi');
-  const ServiceCallRoute = require('./rest/serviceCall/service-call-route');
+  const ServiceCallRoute = require('./serviceCall/service-call-route');
 
   class Server {
 

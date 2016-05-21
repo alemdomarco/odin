@@ -8,12 +8,10 @@
     loadRoutes(server){
       
         server.route({
-            method: 'POST',
+            method: 'GET',
             path: '/service/call',
             handler: function (request, reply) {
-                var rawServiceCall = request.payload;
-                console.log(rawServiceCall);
-                reply('Service call saved');
+                reply('Service call get');
             }
         });
     }
