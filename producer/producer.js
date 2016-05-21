@@ -1,7 +1,7 @@
 (function () {
   "use strict"
 
-  const zmq = require('zmq')
+  const zmq = require('zmq');
   const sock = zmq.socket('push');
   const io = require('socket.io').listen(5000);
   
