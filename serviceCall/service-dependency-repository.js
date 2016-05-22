@@ -96,7 +96,7 @@
             var deferred = Q.defer();
             var db = this._db;
 
-            let query = 'match (s1:service {host: "' + host + '"}) -[c:calls]-> (s2:service) return DISTINCT s1.host, s2.host, c.status, c.method, c.context, c.uri, avg(toFloat(c.latency)), count(c)';
+            let query = 'match (s1:service {host: "' + host + '"}) -[c:calls]-> (s2:service) return DISTINCT s1.host as host1, s2.host as host2, c.status as status, c.method as method, c.context as context, c.uri as uri, avg(toFloat(c.latency)) as latency, count(c) as requestcount';
             db.cypherQuery(query, function (err, result) {
                 if (err) throw err;
 
@@ -119,6 +119,27 @@
 
             });
             return deferred.promise;
+        }
+        
+        dataToFront(resultSet) {
+            let dictionary = {
+                'host1': 'source',
+                'host2': 'target'
+            }
+            
+            let result = [];
+            
+            for(var i in resultSet.data) {
+                let record = {};
+                for(var j in resultSet.columns) {
+                    let column = resultSet.columns[j];
+                    let key = dictionary[column]? dictionary[column] : column;
+                    record[key] = resultSet.data[i][j];
+                }
+                result.push(record);
+            }
+            
+            return result;
         }
         
         dataToGraph(data) {
@@ -168,7 +189,9 @@
             }
             
             return result;
-        }        
+        }
+        
+                
     }
 
     module.exports = ServiceDependencyRepository;
