@@ -1,0 +1,6 @@
+# Properties by key=value by context 
+
+[main]
+odinLog = /usr/share/nginx/logs/access-odin.log
+host = odin:HfJJHr3KTI5CTj7G4A9t@odin.sb05.stations.graphenedb.com
+port = 24789

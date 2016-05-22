@@ -2,13 +2,13 @@
   "use strict"
 
   const Tail = require('tail').Tail;
-  const odinLog = "/usr/share/nginx/logs/access-odin.log";
-  const ServiceDependencyRepository = require("./../serviceCall/service-dependency-repository")
+  const properties = require('./../config/config.js');
+  const ServiceDependencyRepository = require("./../serviceDependency/service-dependency-repository")
 
   class OdinFileProducer {
 
     constructor() {
-      this._tail = new Tail(odinLog);
+      this._tail = new Tail(properties.get('main.odinLog'));
     }
 
     produceOdinDate() {

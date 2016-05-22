@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine-node spec"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
   "dependencies": {
     "hapi": "^13.4.1",
     "inert": "^4.0.0",
+    "jasmine-node": "^1.14.5",
     "node-neo4j": "^2.0.3",
+    "properties-reader": "0.0.15",
     "q": "^1.4.1",
     "tail": "^1.1.0"
   }
