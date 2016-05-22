@@ -109,6 +109,7 @@ body {
     -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+	z-index: 99;
 }
 
 .header .fields-align {
@@ -207,6 +208,11 @@ body {
 	margin-top: 3px;
 }
 
+.menu-item .split2 .field {
+	width: 50%;
+	display: inline-block;
+}
+
 .menu-item .field .field-label{
 	width: 64px;
 	position: absolute;
@@ -224,4 +230,28 @@ body {
 	width: 100%;
 	box-sizing: border-box;
 	padding-left: 6px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#load-mask {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(239,239,239,0.7);
+	z-index: 8;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#load-mask .loading {
+	height: 64px;
+	width: 64px;
+	background-image: url('../images/loading.gif');
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -32px;
+	margin-top: -32px;
 }

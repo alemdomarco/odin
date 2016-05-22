@@ -15,9 +15,10 @@
         <div id="viewport">
             <div id="container"></div>
             <div id="side-menu">
-                <div class="menu-resizer" style="position: absolute; z-index: 99; height: 100%; width: 6px; top:0; left: 0; cursor: ew-resize; background-color: red;"></div>
+                <div class="menu-resizer" style="position: absolute; z-index: 9; height: 100%; width: 10px; top:0; left: 0; cursor: ew-resize;"></div>
                 <div class="head">Head</div>
                 <div class="container"></div>
+                <div id="load-mask"><div class="loading"></div></div>
             </div>
             <div class="header">
                 <div id="logo-odin"></div>
@@ -47,6 +48,12 @@
 			    	$('#viewport').css("padding-right", elWidth);
 			    }
 			});
+			
+    	    if(event.stopPropagation) event.stopPropagation();
+            if(event.preventDefault) event.preventDefault();
+            event.cancelBubble=true;
+            event.returnValue=false;
+            return false;
 		});
 		
 		$(document).mouseup(function(event) {
@@ -179,6 +186,14 @@
                         y: position.centerY
                     });
                     
+                    openSideMenu();
+                    $('#load-mask').show();
+                    $.getJSON('/service/'+ nodeId +'/dependency/graph', function(data) {
+                        $('#side-menu .head').html(nodeId);
+                        addSideMenu(data);
+                        $('#load-mask').hide();
+                    });
+                    
                     // Since the data has been modified, we need to
                     // call the refresh method to make the colors
                     // update effective.
@@ -202,7 +217,7 @@
             });
         
             var rangeVal = getRange(s);
-            drawRange('M/s', rangeVal.max*data.maxLatency, rangeVal.min*data.minLatency);
+            drawRange('ms', rangeVal.max*data.maxLatency, rangeVal.min*data.minLatency);
         
             // We first need to save the original colors of our
             // nodes and edges, like this:
@@ -250,12 +265,11 @@
                 // update effective.
                 
                 openSideMenu();
-                
+                $('#load-mask').show();
                 $.getJSON('/service/'+ nodeId +'/dependency/graph', function(data) {
-                    console.log(data, nodeId);
-                    
                     $('#side-menu .head').html(nodeId);
-                    addSideMenu();
+                    addSideMenu(data);
+                    $('#load-mask').hide();
                 });
                 
                 s.refresh();

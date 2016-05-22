@@ -22,7 +22,7 @@ var drawRange = function(measu, max, min) {
       $('.range-container .max').html(max +' C/s');
       $('.range-container .min').html(min +' C/s');
   } else {
-      var rangeContainer = $('<div class="range-container"><div class="ruler-lines"><div class="ruler"></div></div><span class="max">'+ max +' '+ measu +'</span><span class="min">'+ min +' '+ measu +'</span></div>');
+      var rangeContainer = $('<div class="range-container"><div class="ruler-lines"><div class="ruler"></div></div><span class="max">'+ max.toFixed(3) +' '+ measu +'</span><span class="min">'+ min.toFixed(3) +' '+ measu +'</span></div>');
       rangeContainer.appendTo('body');
   }
 }
@@ -40,26 +40,49 @@ var hideSideMenu = function() {
 }
 
 var addSideMenu = function(data) {
-    var newItem = $(
-        '<div class="menu-item">'+
-        	'<div class="field">'+
-        		'<div class="field-label">Target</div>'+
-        		'<div class="field-value">Value</div>'+
-        	'</div>'+
-        	
-        	'<div class="field">'+
-        		'<div class="field-label">URI</div>'+
-        		'<div class="field-value">Value</div>'+
-        	'</div>'+
-        	
-        	'<div class="field">'+
-        		'<div class="field-label">STATUS</div>'+
-        		'<div class="field-value">Value</div>'+
-        	'</div>'+
-        '</div>'
-    );
+    $('#side-menu .container').empty();
     
-    $('#side-menu .container').append(newItem);
+    if(data.length > 0){
+        $.each(data, function(index, item) {
+        
+            var newItem = $(
+                '<div class="menu-item">'+
+                	'<div class="field">'+
+                		'<div class="field-label">Target</div>'+
+                		'<div class="field-value"><b>'+ item.target +'</b></div>'+
+                	'</div>'+
+                	
+                	'<div class="field">'+
+                		'<div class="field-label">URI</div>'+
+                		'<div class="field-value">'+ item.uri +'</div>'+
+                	'</div>'+
+                	
+                	'<div class="field">'+
+                		'<div class="field-label">Method</div>'+
+                		'<div class="field-value">'+ item.method +'</div>'+
+                	'</div>'+
+                	
+                	'<div class="field">'+
+                		'<div class="field-label">Status</div>'+
+                		'<div class="field-value">'+ item.status +'</div>'+
+                	'</div>'+
+                	
+                	'<div class="field">'+
+                		'<div class="field-label">Requests</div>'+
+                		'<div class="field-value">'+ item.requestCount +'</div>'+
+                	'</div>'+
+                	
+                	'<div class="field">'+
+                		'<div class="field-label">Latency</div>'+
+                		'<div class="field-value">'+ item.latency +'</div>'+
+                	'</div>'+
+                '</div>'
+            );
+            $('#side-menu .container').append(newItem);
+        });
+    } else {
+        $('#side-menu .container').append('<span style="font-size: 14px; color: #666;">No interactions to display.</span>');
+    }
 }
  
  
