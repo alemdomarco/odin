@@ -29,6 +29,39 @@
 <script>
     $(document).ready(function() {
         
+        var parseJSONGraph = function(JSON){
+            var graphJSON = {
+                nodes: [],
+                edges: []
+            };
+            
+            $.each(JSON.nodes, function(index, node) {
+                graphJSON.nodes.push({
+                    "id": node.id,
+                    "label": node.label,
+                    "x": Math.random()*10,
+                    "y": Math.random()*10,
+                    "size": Math.random(),
+                    "color": "#9fe584"
+                });
+            });
+            
+            $.each(JSON.edges, function(index, edge){
+                graphJSON.edges.push({
+                    "id": edge.id,
+                    "label": edge.id,
+                    "source": edge.source,
+                    "target": edge.target,
+                    "size": edge.count,
+                    "color": "rgb("+ Math.floor(255*edge.latency) +",0,"+ Math.floor(255-(255*edge.latency)) +")",
+                    "type": "curvedArrow"
+                });
+            });
+            
+            console.log(JSON, graphJSON);
+            return graphJSON;
+        }
+        
         // Add a method to the graph model that returns an
         // object with every neighbors of a node inside:
         sigma.classes.graph.addMethod('neighbors', function(nodeId) {
@@ -40,6 +73,7 @@
                 neighbors[k] = this.nodesIndex[k];
             return neighbors;
         });
+        
         
         sigma.classes.graph.addMethod('goToNodes', function(nodes, camera){
             var topLeftX = Number.MAX_VALUE,
@@ -73,22 +107,24 @@
             };
         });
         
-        var sigmaGraph = sigma.parsers.json('data.json', {
-            renderer: {
-                container: document.getElementById('container'),
-                type: 'canvas'
-            },
-            settings: {
-                edgeLabelSize: 'proportional',
-                minEdgeSize: 1,
-                maxEdgeSize: 11,
-                minNodeSize: 14,
-                minNodeSize: 14,
-                defaultLabelColor: '#fff',
-                borderSize: 3,
-                defaultNodeBorderColor: '#fff'
-            }
-        }, function(s) {
+        $.getJSON('/service/dependency/graph', function(data){
+            var s = new sigma({
+                graph: parseJSONGraph(data),
+                renderer: {
+                    container: document.getElementById('container'),
+                    type: 'canvas'
+                },
+                settings: {
+                    edgeLabelSize: 'proportional',
+                    minEdgeSize: 1,
+                    maxEdgeSize: 11,
+                    minNodeSize: 14,
+                    minNodeSize: 14,
+                    defaultLabelColor: '#fff',
+                    borderSize: 3,
+                    defaultNodeBorderColor: '#fff'
+                }
+            });
             
             $('#filter').autocomplete({
                 source: s.graph.nodes(),
