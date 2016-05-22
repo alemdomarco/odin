@@ -69,7 +69,7 @@ var addSideMenu = function(data) {
                 	
                 	'<div class="field">'+
                 		'<div class="field-label">Requests</div>'+
-                		'<div class="field-value">'+ item.requestCount +'</div>'+
+                		'<div class="field-value">'+ item.requestcount +'</div>'+
                 	'</div>'+
                 	
                 	'<div class="field">'+
