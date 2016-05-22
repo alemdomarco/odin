@@ -16,7 +16,9 @@
             method: 'GET',
             path: '/service/dependency/graph/',
             handler: function (request, reply) {
-                
+                this._serviceDependencyRepository.findAggAll().then(function (data) {
+                     reply(this._serviceDependencyRepository.dataToGraph(data));
+                });
             }
         });
         
