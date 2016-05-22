@@ -1,15 +1,19 @@
-(function(){
-  
+(function () {
+
   "use strict"
-  
-  //const OdinFileProducer = require("./producer/odin-file-producer");
+
+  const OdinFileProducer = require("./producer/odin-file-producer");
   const Server = require('./server.js');
-  
-  //let odinFileProducer = new OdinFileProducer();
-  // Temp disabled
-  //odinFileProducer.produceOdinDate();
+
+  if (process.argv.length > 2) {
+    var nginx = process.argv[2];
+    if (nginx.indexOf("nginx") > -1) {
+      let odinFileProducer = new OdinFileProducer();
+      odinFileProducer.produceOdinDate();
+    };
+  }
   
   let server = new Server();
-	server.startServer();
-  
+  server.startServer();
+
 })();
