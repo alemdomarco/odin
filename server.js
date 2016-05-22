@@ -2,17 +2,33 @@
 
   'use strict';
 
-  const hapi = require('hapi');
+  const Hapi = require('hapi');
+  const Inert = require('inert');
   const ServiceDependencyRoute = require('./serviceCall/service-dependency-route');
 
   class Server {
 
     startServer() {
-      const server = new hapi.Server();
+      const server = new Hapi.Server();
       server.connection({ routes: { cors: true }, port: process.env.PORT || 5000 });
 
       var serviceDependencyRoute = new ServiceDependencyRoute();
       serviceDependencyRoute.loadRoutes(server);
+
+      server.register(Inert, () => { });
+
+      server.route({
+        method: 'GET',
+        path: '/{param*}',
+        handler: {
+          directory: {
+            path: 'ui',
+            redirectToSlash: true,
+            index: true
+          }
+        }
+      });
+
 
       server.start(() => {
         console.log('Server running at:', server.info.uri);
