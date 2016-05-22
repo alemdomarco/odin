@@ -1,0 +1,77 @@
+{
+	"id": "a3e3dcb4-c560-3087-0314-6b59db224f93",
+	"name": "odin",
+	"description": "",
+	"order": [
+		"92a2a723-286a-00ae-7664-430cdcfecfc5",
+		"eedca31a-848d-867a-bfca-7e89a08890cb",
+		"80bec1bf-6afe-571a-ff1b-c63ccfa605f3"
+	],
+	"folders": [],
+	"timestamp": 1463798483142,
+	"owner": "454830",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "80bec1bf-6afe-571a-ff1b-c63ccfa605f3",
+			"headers": "",
+			"url": "http://localhost:5000/service/dependency/graph",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463887190297,
+			"name": "http://localhost:5000/service/dependency/graph",
+			"description": "",
+			"collectionId": "a3e3dcb4-c560-3087-0314-6b59db224f93",
+			"responses": []
+		},
+		{
+			"id": "92a2a723-286a-00ae-7664-430cdcfecfc5",
+			"headers": "",
+			"url": "http://localhost:5000/service/:host/dependency",
+			"preRequestScript": null,
+			"pathVariables": {
+				"host": "service1"
+			},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463887199420,
+			"name": "http://localhost:5000/service/:host/dependency",
+			"description": "",
+			"collectionId": "a3e3dcb4-c560-3087-0314-6b59db224f93",
+			"responses": []
+		},
+		{
+			"id": "eedca31a-848d-867a-bfca-7e89a08890cb",
+			"headers": "",
+			"url": "http://localhost:5000/service/:host/dependency/graph",
+			"preRequestScript": null,
+			"pathVariables": {
+				"host": "service1"
+			},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1463887195641,
+			"name": "http://localhost:5000/service/:host/dependency/graph",
+			"description": "",
+			"collectionId": "a3e3dcb4-c560-3087-0314-6b59db224f93",
+			"responses": []
+		}
+	]
+}
