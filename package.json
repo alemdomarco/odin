@@ -22,6 +22,7 @@
     "inert": "^4.0.0",
     "jasmine-node": "^1.14.5",
     "node-neo4j": "^2.0.3",
+    "properties-reader": "0.0.15",
     "q": "^1.4.1",
     "tail": "^1.1.0"
   }

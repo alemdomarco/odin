@@ -1,20 +1,15 @@
 (function () {
     "use strict"
 
+    const properties = require('./../config/config.js');
     const Neo4j = require('node-neo4j');
     const Q = require('q');
 
-    const host = 'odin:HfJJHr3KTI5CTj7G4A9t@odin.sb05.stations.graphenedb.com';
-    const port = 24789;
-
-
     class ServiceDependencyRepository {
-
-
+        
         constructor() {
-            this._db = new Neo4j('http://' + host + ':' + port);
+            this._db = new Neo4j('http://' + properties.get('main.host') + ':' + properties.get('main.port'));
         }
-
 
         saveServiceCallData(data) {
             var db = this._db;
