@@ -10,7 +10,7 @@
 
     startServer() {
       const server = new Hapi.Server();
-      server.connection({ routes: { cors: true }, host: process.env.IP || 'localhost', port: process.env.PORT || 8080 });
+      server.connection(process.env.PORT || 5000);
 
       var serviceDependencyRoute = new ServiceDependencyRoute();
       serviceDependencyRoute.loadRoutes(server);
