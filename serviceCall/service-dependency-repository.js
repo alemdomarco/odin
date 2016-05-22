@@ -128,16 +128,19 @@
             var maxCount = 0;
             var nodes = [];
             var edges = [];
+            var nodeNames = [];
             
             for(var i in data) {
                 minLatency = (data[i][2] < minLatency)? data[i][2] : minLatency;
                 maxLatency = (data[i][2] > maxLatency)? data[i][2] : maxLatency;
                 minCount = (data[i][3] < minCount)? data[i][3] : minCount;
                 maxCount = (data[i][3] > maxCount)? data[i][3] : maxCount;
-                if(nodes.indexOf(data[i][0]) < 0) {
+                if(nodeNames.indexOf(data[i][0]) < 0) {
+                    nodeNames.push(data[i][0]);
                     nodes.push({ id: data[i][0], label: data[i][0]}) ;
                 }
-                if(nodes.indexOf(data[i][1]) < 0) {
+                if(nodeNames.indexOf(data[i][1]) < 0) {
+                    nodeNames.push(data[i][1]);
                     nodes.push({ id: data[i][1], label: data[i][1]}) ;
                 }
             }
