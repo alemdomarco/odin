@@ -1,7 +1,7 @@
 (function () {
     "use strict"
 
-    const ServiceCallRepository = require("./service-call-repository");
+    const ServiceCallRepository = require("../../serviceCall/service-call-repository");
 
     var service = new ServiceCallRepository();
 
