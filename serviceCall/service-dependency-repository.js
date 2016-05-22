@@ -133,7 +133,7 @@
                 minLatency = (data[i][2] < minLatency)? data[i][2] : minLatency;
                 maxLatency = (data[i][2] > maxLatency)? data[i][2] : maxLatency;
                 minCount = (data[i][3] < minCount)? data[i][3] : minCount;
-                maxCount = (data[i][3] < maxCount)? data[i][3] : maxCount;
+                maxCount = (data[i][3] > maxCount)? data[i][3] : maxCount;
                 if(nodes.indexOf(data[i][0]) < 0) {
                     nodes.push({ id: data[i][0], label: data[i][0]}) ;
                 }
