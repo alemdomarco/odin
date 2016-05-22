@@ -8,7 +8,7 @@
     const port = 24789;
 
 
-    class ServiceCallRepository {
+    class ServiceDependencyRepository {
 
 
         constructor() {
@@ -115,8 +115,6 @@
             db.cypherQuery(query, function (err, result) {
                 if (err) throw err;
 
-                console.info(result);
-                console.info(that.dataToGraph(result.data));
                 deferred.resolve(result);
 
             });
@@ -170,6 +168,6 @@
         }        
     }
 
-    module.exports = ServiceCallRepository;
+    module.exports = ServiceDependencyRepository;
 
 })();

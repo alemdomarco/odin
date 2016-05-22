@@ -3,7 +3,7 @@
 
   const Tail = require('tail').Tail;
   const odinLog = "/usr/share/nginx/logs/access-odin.log";
-  const ServiceCallRepository = require("./../serviceCall/service-call-repository")
+  const ServiceDependencyRepository = require("./../serviceCall/service-dependency-repository")
 
   class OdinFileProducer {
 
@@ -13,7 +13,7 @@
 
     produceOdinDate() {
       
-      let serviceCallRepository = new ServiceCallRepository();
+      let serviceDependencyRepository = new ServiceDependencyRepository();
       
       this._tail.on("line", function (data) {
         let parsedDate = JSON.parse(data);
@@ -31,7 +31,7 @@
         }
         
         console.log(odin);
-        serviceCallRepository.saveServiceCallData(odin);
+        serviceDependencyRepository.saveServiceCallData(odin);
       });
 
       this._tail.on("error", function (error) {

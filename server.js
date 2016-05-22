@@ -3,7 +3,7 @@
   'use strict';
 
   const hapi = require('hapi');
-  const ServiceCallRoute = require('./serviceCall/service-call-route');
+  const ServiceDependencyRoute = require('./serviceCall/service-dependency-route');
 
   class Server {
 
@@ -11,7 +11,7 @@
       const server = new hapi.Server();
       server.connection({ routes: { cors: true }, port: process.env.PORT || 5000 });
 
-      var serviceCallRoute = new ServiceCallRoute();
+      var serviceDependencyRoute = new ServiceDependencyRoute();
       serviceCallRoute.loadRoutes(server);
 
       server.start(() => {
