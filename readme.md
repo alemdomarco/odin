@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/maviteixeira/odin/master/images/odin.png" />
+<img src="https://raw.github.com/maviteixeira/odin/master/odin.png" />
 
 # The ODIN Project
 
@@ -80,7 +80,7 @@ port = 24789
 
 ### Nginx observations:
 
-* For capturing data, the Nginx must be running on the same host as Odin. This is due to it currently only having one implmentation of the data gathering unit, which relies on access to Nginx log files.
+* For capturing data, the Nginx must be running on the same host as Odin. This is due to it currently only having one implementation of the data gathering unit, which relies on access to Nginx log files.
 
 ## Future Improvements
 
