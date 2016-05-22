@@ -1,4 +1,9 @@
-# Project ODIN
+# The ODIN Project
+
+Live demo:  https://odinx.herokuapp.com/
+
+----------
+
 
 ## Introduction
 
@@ -30,7 +35,7 @@ We decided to use the most known reverse proxy, Nginx and the most used Graph ba
 
 ## Long story short
 
-The main goal is getting microservices request data using a reverse proxy as data source, nginx in our case and storing in a Graph Database.
+The main goal is getting microservices request data using a reverse proxy as data source, nginx in our case and storing the data in a Graph Database while providing a nice way to visualize it.
 
 
 ## Nginx configuration
@@ -47,13 +52,39 @@ Enable accesslog on nginx:
 access_log  logs/access-odin.log  odin;
 ```
 
-## To run the application just follow the commands below:
+## Running Odin:
 
 There are two ways of running the application:
-* 
 
-* npm install
-* npm start
+ 1. Run it just to visualize the Graph data already available: 
+  * npm install
+  * npm start
+ 2. Run it to capture data and visualize the data:
+  * npm start nginx (to lookup nginx access_log)
 
-Thes
-* npm start nginx (to lookup nginx access_log)
+## Configuring Odin:
+
+Configuration of the appliction is done through the file `config/properties.file`
+```
+[main]
+odinLog = /usr/share/nginx/logs/access-odin.log
+# these credentials are temporarily with readonly access. 
+host = odin:passwd@odin.sb05.stations.graphenedb.com
+port = 24789
+```
+**odinLog**: the path to the log file where Nginx will insert data and Odin will read from.
+**host**: the host of Neo4j. 
+**port**: the port of Neo4j.
+
+### Nginx observations:
+
+* For capturing data, the Nginx must be running on the same host as Odin. This is due to it currently only having one implmentation of the data gathering unit, which relies on access to Nginx log files.
+
+## Future Improvements
+
+There are several things that we have considered as valuable improvements, but didn't yet have time to implement. They are:
+
+* As of now, the consumption of the log data and the insertion into the Graph database are being done in a direct, synchronous way. We plan to introduce a queue in between to make te two steps independent and more resilient.
+* Implementing more ways to consume the data from Nginx, enabling it to be on a different host than Odin.
+* Implementing data producers for other reverse proxies.
+* Implement a URI pattern extraction algorithm to aggregate requests for the same service, but different path parameters.
