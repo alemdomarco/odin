@@ -90,3 +90,4 @@ There are several things that we have considered as valuable improvements, but d
 * Implementing more ways to consume the data from Nginx, enabling it to be on a different host than Odin.
 * Implementing data producers for other reverse proxies.
 * Implement a URI pattern extraction algorithm to aggregate requests for the same service, but different path parameters.
+* Implement a more elaborate dashboard with charts of latency by time, number of calls by time, etc..
