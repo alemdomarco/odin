@@ -30,3 +30,4 @@ access_log  logs/access-odin.log  odin;
 
 * npm install
 * node index.js
+* node index.js nginx (to lookup nginx access_log)
