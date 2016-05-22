@@ -1,3 +1,5 @@
+<img src="https://raw.github.com/maviteixeira/odin/master/images/odin.png" />
+
 # The ODIN Project
 
 Live demo:  https://odinx.herokuapp.com/
@@ -78,7 +80,7 @@ port = 24789
 
 ### Nginx observations:
 
-* For capturing data, the Nginx must be running on the same host as Odin. This is due to it currently only having one implmentation of the data gathering unit, which relies on access to Nginx log files.
+* For capturing data, the Nginx must be running on the same host as Odin. This is due to it currently only having one implementation of the data gathering unit, which relies on access to Nginx log files.
 
 ## Future Improvements
 
@@ -88,3 +90,4 @@ There are several things that we have considered as valuable improvements, but d
 * Implementing more ways to consume the data from Nginx, enabling it to be on a different host than Odin.
 * Implementing data producers for other reverse proxies.
 * Implement a URI pattern extraction algorithm to aggregate requests for the same service, but different path parameters.
+* Implement a more elaborate dashboard with charts of latency by time, number of calls by time, etc..
