@@ -17,14 +17,13 @@
       
       this._tail.on("line", function (data) {
         let parsedDate = JSON.parse(data);
-        let parameters = parsedDate.request_uri.split('/');
         let odin = {
           time: parsedDate.time,
           latency: parsedDate.request_time,
           origin: parsedDate.origin,
-          destination: parsedDate.destination,
+          destination: parsedDate.destination.split(':')[0],
           port: parsedDate.port,
-          context: parameters[1],
+          context: parsedDate.request_uri.split('/')[1],
           uri: parsedDate.request_uri,
           status: parsedDate.status_code,
           method: parsedDate.method

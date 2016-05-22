@@ -20,7 +20,7 @@ The main goal is getting microservices data using a reverse proxy as data source
 ## Nginx configuration
 
 # You need to add this log_format for access log:
-log_format  odin  '{ "bytes": "$bytes_sent", "port": "$proxy_port", "remote":"$remote_addr", "accepter": "$server_addr:$proxy_port" ,"requesturi":"$request_uri", "user": "$remote_user", "timeiso": "$time_iso8601", "status": "$status", "requesttime": "$request_time", "querystring": "$query_string", "method": "$request_method"} ';
+log_format  odin  '{ "bytes": "$bytes_sent", "port": "$proxy_port", "origin":"$remote_addr", "destination": "$proxy_host" ,"request_uri":"$request_uri", "time": "$time_iso8601", "status_code": "$status", "request_time": "$request_time", "method": "$request_method"} ';
 
 # Enable accesslog on nginx
 access_log  logs/access-odin.log  odin;
