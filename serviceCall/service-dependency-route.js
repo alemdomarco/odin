@@ -14,8 +14,8 @@
                 method: 'GET',
                 path: '/service/dependency/graph',
                 handler: function (request, reply) {
-                    serviceDependencyRepository.findAggAll().then(function (data) {
-                        reply(serviceDependencyRepository.dataToGraph(data));
+                    serviceDependencyRepository.findAggAll().then(function (response) {
+                        reply(serviceDependencyRepository.dataToGraph(response.data));
                     });
                 }
             });
@@ -25,8 +25,8 @@
                 path: '/service/{host}/dependency/graph',
                 handler: function (request, reply) {
                     let host = request.params.host;
-                    serviceDependencyRepository.findAggDependenciesOfHost(host).then(function (data) {
-                        reply(serviceDependencyRepository.dataToGraph(data));
+                    serviceDependencyRepository.findAggDependenciesOfHost(host).then(function (response) {
+                        reply(serviceDependencyRepository.dataToGraph(response.data));
                     });
                 }
             });
@@ -36,8 +36,8 @@
                 path: '/service/{host}/dependency',
                 handler: function (request, reply) {
                     let host = request.params.host;
-                    serviceDependencyRepository.findDependenciesOfHost(host).then(function (data) {
-                        reply(data);
+                    serviceDependencyRepository.findDependenciesOfHost(host).then(function (response) {
+                        reply(response.data);
                     });
                 }
             });
