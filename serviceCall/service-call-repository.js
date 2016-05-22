@@ -25,7 +25,7 @@
             ]).then(function () {
 
                 let query = 'match (s1:service), (s2:service) ' +
-                    'where s1.ip = "' + data.origin + '" and s2.ip = "' + data.destination + '" ' +
+                    'where s1.host = "' + data.origin + '" and s2.host = "' + data.destination + '" ' +
                     'create (s1) -[:calls {context: "' + data.context + '", time: "' + data.time + '", latency: "' + data.latency +
                     '", uri: "' + data.uri + '", status: "' + data.status + '", method: "' + data.method + '"}]-> (s2)';
 
@@ -37,16 +37,16 @@
 
         }
 
-        findOrCreateNodeByIP(ip) {
+        findOrCreateNodeByIP(host) {
             var deferred = Q.defer();
             var db = this._db;
 
-            let originquery = 'match (s:service { ip: "' + ip + '"}) return s.ip';
+            let originquery = 'match (s:service { host: "' + host + '"}) return s.host';
             db.cypherQuery(originquery, function (err, result) {
                 if (err) throw err;
                 
                 if (result.data.length < 1) {
-                    db.cypherQuery('create (:service { ip:  "' + ip + '"})', function (err, result) {
+                    db.cypherQuery('create (:service { host:  "' + host + '"})', function (err, result) {
                         if (err) throw err;
                         deferred.resolve();
                     });
@@ -58,16 +58,16 @@
             return deferred.promise;
         }
 
-        findOrCreateNodeByIpAndPort(ip, port) {
+        findOrCreateNodeByIpAndPort(host, port) {
             var deferred = Q.defer();
             var db = this._db;
 
-            let destinationquery = 'match (s:service { ip: "' + ip + '", port: "' + port + '"}) return s.ip, s.port';
+            let destinationquery = 'match (s:service { host: "' + host + '", port: "' + port + '"}) return s.host, s.port';
             db.cypherQuery(destinationquery, function (err, result) {
                 if (err) throw err;
 
                 if (result.data.length < 1) {
-                    db.cypherQuery('create (s:service { ip: "' + ip + '", port: "' + port + '"})', function (err, result) {
+                    db.cypherQuery('create (s:service { host: "' + host + '", port: "' + port + '"})', function (err, result) {
                         if (err) throw err;
                         deferred.resolve();
                     });
