@@ -14,7 +14,13 @@
     <body>
         <div id="viewport">
             <div id="container"></div>
+            <div id="side-menu">
+                <div class="menu-resizer" style="position: absolute; z-index: 99; height: 100%; width: 6px; top:0; left: 0; cursor: ew-resize; background-color: red;"></div>
+                <div class="head">Head</div>
+                <div class="container"></div>
+            </div>
             <div class="header">
+                <div id="logo-odin"></div>
                 <div class="fields-align">
                     <div class="fields" id="header-fields">
                         <button id="orderNodes">Order Nodes</button>
@@ -28,6 +34,27 @@
 
 <script>
     $(document).ready(function() {
+
+		$('.menu-resizer').mousedown(function(event) {
+			var startMouseX = event.pageX;
+			var startElWidth = $('#side-menu').outerWidth();
+			
+			$(document).on('mousemove', function(eventMove) {
+			    var elWidth = startElWidth + (startMouseX - eventMove.pageX);
+			    
+			    if(elWidth > 300){
+			        $('#side-menu').css('width', elWidth);
+			    	$('#viewport').css("padding-right", elWidth);
+			    }
+			});
+		});
+		
+		$(document).mouseup(function(event) {
+			$(document).off('mousemove');
+		});
+		
+		
+		
         
         var parseJSONGraph = function(JSON){
             var graphJSON = {
@@ -39,8 +66,8 @@
                 graphJSON.nodes.push({
                     "id": node.id,
                     "label": node.label,
-                    "x": Math.random()*10,
-                    "y": Math.random()*10,
+                    "x": Math.random()*5,
+                    "y": Math.random()*5,
                     "size": Math.random(),
                     "color": "#9fe584"
                 });
@@ -58,7 +85,6 @@
                 });
             });
             
-            console.log(JSON, graphJSON);
             return graphJSON;
         }
         
@@ -156,26 +182,27 @@
                     // Since the data has been modified, we need to
                     // call the refresh method to make the colors
                     // update effective.
+                    openSideMenu();
                     s.refresh();
                 }
-            });
+            }).attr("placeholder", "search");
             
             var startForceRunning = false;
             $('#orderNodes').button();
             $('#orderNodes').on('click', function(event, ui) {
                 if(!startForceRunning) {
-                    $('#orderNodes').button('option', 'label', 'Order Nodes');
+                    $('#orderNodes').button('option', 'label', 'STOP ORDERING');
                     startForceRunning = true;
                     s.startForceAtlas2();
                 } else {
-                    $('#orderNodes').button('option', 'label', 'stop Ordering');
+                    $('#orderNodes').button('option', 'label', 'ORDER NODES');
                     startForceRunning = false;
                     s.stopForceAtlas2();
                 }
             });
         
             var rangeVal = getRange(s);
-            drawRange(rangeVal.max, rangeVal.min);
+            drawRange('M/s', rangeVal.max*data.maxLatency, rangeVal.min*data.minLatency);
         
             // We first need to save the original colors of our
             // nodes and edges, like this:
@@ -221,6 +248,16 @@
                 // Since the data has been modified, we need to
                 // call the refresh method to make the colors
                 // update effective.
+                
+                openSideMenu();
+                
+                $.getJSON('/service/'+ nodeId +'/dependency/graph', function(data) {
+                    console.log(data, nodeId);
+                    
+                    $('#side-menu .head').html(nodeId);
+                    addSideMenu();
+                });
+                
                 s.refresh();
             });
         
@@ -236,6 +273,7 @@
                 });
         
                 // Same as in the previous event:
+                hideSideMenu();
                 s.refresh();
             });
         });

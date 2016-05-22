@@ -1,3 +1,5 @@
+var sideMenuWidth = 300;
+
 var getRange = function(sigmaVar) {
   var maxS = 0,
       minS = Number.MAX_VALUE;
@@ -15,14 +17,49 @@ var getRange = function(sigmaVar) {
   return {"max": maxS, "min": minS};
 }
  
-var drawRange = function(max, min) {
+var drawRange = function(measu, max, min) {
   if($('.range-container').length > 0) {
       $('.range-container .max').html(max +' C/s');
       $('.range-container .min').html(min +' C/s');
   } else {
-      var rangeContainer = $('<div class="range-container"><div class="ruler-lines"><div class="ruler"></div></div><span class="max">'+ max +' C/s</span><span class="min">'+ min +' C/s</span></div>');
+      var rangeContainer = $('<div class="range-container"><div class="ruler-lines"><div class="ruler"></div></div><span class="max">'+ max +' '+ measu +'</span><span class="min">'+ min +' '+ measu +'</span></div>');
       rangeContainer.appendTo('body');
   }
+}
+
+var openSideMenu = function() {
+    $('#side-menu').css("width", sideMenuWidth);
+    $('#viewport').css("padding-right", sideMenuWidth);
+    $('#side-menu').show();
+}
+
+var hideSideMenu = function() {
+    $('#side-menu').css("width", 0);
+    $('#viewport').css("padding-right", 0);
+    $('#side-menu').hide();
+}
+
+var addSideMenu = function(data) {
+    var newItem = $(
+        '<div class="menu-item">'+
+        	'<div class="field">'+
+        		'<div class="field-label">Target</div>'+
+        		'<div class="field-value">Value</div>'+
+        	'</div>'+
+        	
+        	'<div class="field">'+
+        		'<div class="field-label">URI</div>'+
+        		'<div class="field-value">Value</div>'+
+        	'</div>'+
+        	
+        	'<div class="field">'+
+        		'<div class="field-label">STATUS</div>'+
+        		'<div class="field-value">Value</div>'+
+        	'</div>'+
+        '</div>'
+    );
+    
+    $('#side-menu .container').append(newItem);
 }
  
  
