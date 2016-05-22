@@ -2,11 +2,11 @@
 
     "use strict"
 
-    const ServiceDependencyRepository = require("./../../serviceCall/service-dependency-repository");
+    const ServiceDependencyService = require("./../../serviceDependency/service-dependency-Service");
 
-    var serviceDependencyRepository = new ServiceDependencyRepository();
+    var serviceDependencyService = new ServiceDependencyService();
 
-    describe("Service Dependency Repository Test", function () {
+    describe("Service Dependency Service Test", function () {
         it("Testing data to graph", function () {
             
             var data = {
@@ -15,7 +15,7 @@
                 [['service1', 'service4', 1, 3]]
             }
             
-            var graph = serviceDependencyRepository.dataToGraph(data.data);
+            var graph = serviceDependencyService.dataToGraph(data.data);
             
             expect(graph.nodes.length).toBe(2);
             expect(graph.edges.length).toBe(1);
@@ -38,7 +38,7 @@
                 ['service1', 'service3', 200, 'GET', 'tracks', '/this/uri/is/fake', 0.7336, 10]]
             }
             
-            var result = serviceDependencyRepository.dataToFront(data);
+            var result = serviceDependencyService.dataToFront(data);
             
             console.log(result);
             

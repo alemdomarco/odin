@@ -3,7 +3,7 @@
 
   const Tail = require('tail').Tail;
   const properties = require('./../config/config.js');
-  const ServiceDependencyRepository = require("./../serviceCall/service-dependency-repository")
+  const ServiceDependencyRepository = require("./../serviceDependency/service-dependency-repository")
 
   class OdinFileProducer {
 

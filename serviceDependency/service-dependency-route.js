@@ -2,20 +2,21 @@
 
     "use strict"
     const Hapi = require('hapi');
-    const ServiceDependencyRepository = require("./service-dependency-repository");
+    const ServiceDependencyService = require("./service-dependency-service");
 
     class ServiceDependencyRoute {
 
         loadRoutes(server) {
 
-            let serviceDependencyRepository = new ServiceDependencyRepository()
+            let serviceDependencyService = new ServiceDependencyService();
 
             server.route({
                 method: 'GET',
                 path: '/service/dependency/graph',
                 handler: function (request, reply) {
-                    serviceDependencyRepository.findAggAll().then(function (response) {
-                        reply(serviceDependencyRepository.dataToGraph(response.data));
+                    serviceDependencyService.findAggregatedAll().then(function (response) {
+                        console.log(response);
+                        reply(response);
                     });
                 }
             });
@@ -25,7 +26,7 @@
                 path: '/service/{host}/dependency/graph',
                 handler: function (request, reply) {
                     let host = request.params.host;
-                    serviceDependencyRepository.findAggDependenciesOfHost(host).then(function (response) {
+                    serviceDependencyService.findAggregatedDependenciesOfHost(host).then(function (response) {
                         reply(response);
                     });
                 }
@@ -36,8 +37,8 @@
                 path: '/service/{host}/dependency',
                 handler: function (request, reply) {
                     let host = request.params.host;
-                    serviceDependencyRepository.findDependenciesOfHost(host).then(function (response) {
-                        reply(response.data);
+                    serviceDependencyService.findAllDependencyCallsOfHost(host).then(function (response) {
+                        reply(response);
                     });
                 }
             });

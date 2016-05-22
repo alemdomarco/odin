@@ -4,7 +4,7 @@
 
   const Hapi = require('hapi');
   const Inert = require('inert');
-  const ServiceDependencyRoute = require('./serviceCall/service-dependency-route');
+  const ServiceDependencyRoute = require('./serviceDependency/service-dependency-route');
 
   class Server {
 

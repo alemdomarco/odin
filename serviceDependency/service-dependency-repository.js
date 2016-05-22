@@ -6,10 +6,12 @@
     const Q = require('q');
 
     class ServiceDependencyRepository {
-        
+
+
         constructor() {
-            this._db = new Neo4j('http://' + properties.get('main.host') + ':' + properties.get('main.port'));
+             this._db = new Neo4j('http://' + properties.get('main.host') + ':' + properties.get('main.port'));
         }
+
 
         saveServiceCallData(data) {
             var db = this._db;
@@ -77,7 +79,7 @@
             var deferred = Q.defer();
             var db = this._db;
 
-            let query = 'match (s1:service { host: "' + host + '"}) -[c:calls]-> (s2:service) return s1, s2, c';
+            let query = 'match (s1:service { host: "' + host + '"}) -[c:calls]-> (s2:service) return s1.host as host1, s2.host as host2, c.status as status, c.method as method, c.context as context, c.uri as uri, c.latency as latency';
             db.cypherQuery(query, function (err, result) {
                 if (err) throw err;
 
@@ -93,100 +95,30 @@
 
             let query = 'match (s1:service {host: "' + host + '"}) -[c:calls]-> (s2:service) return DISTINCT s1.host as host1, s2.host as host2, c.status as status, c.method as method, c.context as context, c.uri as uri, avg(toFloat(c.latency)) as latency, count(c) as requestcount';
             db.cypherQuery(query, function (err, result) {
-                if (err) throw err;
+                if (err) deferred.error(err);
 
                 deferred.resolve(result);
 
             });
             return deferred.promise;
         }
-        
+
         findAggAll() {
             var deferred = Q.defer();
             var db = this._db;
-            var that = this;
 
             let query = 'match (s1:service) -[c:calls]-> (s2:service) return DISTINCT s1.host, s2.host, avg(toFloat(c.latency)), count(c)';
             db.cypherQuery(query, function (err, result) {
                 if (err) throw err;
-
                 deferred.resolve(result);
 
             });
             return deferred.promise;
         }
-        
-        dataToFront(resultSet) {
-            let dictionary = {
-                'host1': 'source',
-                'host2': 'target'
-            }
-            
-            let result = [];
-            
-            for(var i in resultSet.data) {
-                let record = {};
-                for(var j in resultSet.columns) {
-                    let column = resultSet.columns[j];
-                    let key = dictionary[column]? dictionary[column] : column;
-                    record[key] = resultSet.data[i][j];
-                }
-                result.push(record);
-            }
-            
-            return result;
-        }
-        
-        dataToGraph(data) {
-            var minLatency = Number.MAX_VALUE;
-            var maxLatency = 0.0;
-            var minCount = Number.MAX_VALUE;
-            var maxCount = 0;
-            var nodes = [];
-            var edges = [];
-            var nodeNames = [];
-            
-            for(var i in data) {
-                minLatency = (data[i][2] < minLatency)? data[i][2] : minLatency;
-                maxLatency = (data[i][2] > maxLatency)? data[i][2] : maxLatency;
-                minCount = (data[i][3] < minCount)? data[i][3] : minCount;
-                maxCount = (data[i][3] > maxCount)? data[i][3] : maxCount;
-                if(nodeNames.indexOf(data[i][0]) < 0) {
-                    nodeNames.push(data[i][0]);
-                    nodes.push({ id: data[i][0], label: data[i][0]}) ;
-                }
-                if(nodeNames.indexOf(data[i][1]) < 0) {
-                    nodeNames.push(data[i][1]);
-                    nodes.push({ id: data[i][1], label: data[i][1]}) ;
-                }
-            }
-            
-            //Normalizing values of latency and count between 0 and 1
-            for(var i in data) {
-                let edge = {
-                    id: i,
-                    source: data[i][0],
-                    target: data[i][1],
-                    latency: (data[i][2] - minLatency) / (maxLatency - minLatency),
-                    count: (data[i][3] - minCount) / (maxCount - minCount),
-                }
-                
-                edges.push(edge);
-            }
-            
-            var result = {
-                nodes: nodes,
-                edges: edges,
-                minLatency: minLatency,
-                maxLatency: maxLatency,
-                minCount: minCount,
-                maxCount: maxCount
-            }
-            
-            return result;
-        }
-        
-                
+
+
+
+
     }
 
     module.exports = ServiceDependencyRepository;
