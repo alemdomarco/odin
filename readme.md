@@ -1,3 +1,5 @@
+<img src="https://raw.github.com/maviteixeira/odin/master/odin.png" />
+
 # The ODIN Project
 
 Live demo:  https://odinx.herokuapp.com/
