@@ -1,4 +1,4 @@
-<img src="https://raw.github.com/maviteixeira/odin/master/images/imgpsh_fullsize.png" />
+<img src="https://raw.github.com/maviteixeira/odin/master/images/odin.png" />
 
 # The ODIN Project
 
