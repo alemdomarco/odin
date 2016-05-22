@@ -12,7 +12,7 @@
       server.connection({ routes: { cors: true }, port: process.env.PORT || 5000 });
 
       var serviceDependencyRoute = new ServiceDependencyRoute();
-      serviceCallRoute.loadRoutes(server);
+      serviceDependencyRoute.loadRoutes(server);
 
       server.start(() => {
         console.log('Server running at:', server.info.uri);

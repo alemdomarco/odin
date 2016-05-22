@@ -82,7 +82,7 @@
             var deferred = Q.defer();
             var db = this._db;
 
-            let query = 'match (s1 { host: "' + host + '"}) -[c:calls]-> (s2) return s1, s2 c';
+            let query = 'match (s1:service { host: "' + host + '"}) -[c:calls]-> (s2:service) return s1, s2, c';
             db.cypherQuery(query, function (err, result) {
                 if (err) throw err;
 
