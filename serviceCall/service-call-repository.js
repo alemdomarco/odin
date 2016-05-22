@@ -4,7 +4,7 @@
     const Neo4j = require('node-neo4j');
     const Q = require('q');
 
-    const host = 'odin:TgJfSRVRmyluxAsfDe4U@odin.sb05.stations.graphenedb.com';
+    const host = 'odin:HfJJHr3KTI5CTj7G4A9t@odin.sb05.stations.graphenedb.com';
     const port = 24789;
 
 
@@ -21,11 +21,11 @@
 
             Q.all([
                 this.findOrCreateNodeByIP(data.origin),
-                this.findOrCreateNodeByIpAndPort(data.destination, data.port)
+                this.findOrCreateNodeByIP(data.destination)
             ]).then(function () {
 
                 let query = 'match (s1:service), (s2:service) ' +
-                    'where s1.ip = "' + data.origin + '" and s1.port IS NULL and s2.ip = "' + data.destination + '" and s2.port = "' + data.port + '" ' +
+                    'where s1.ip = "' + data.origin + '" and s2.ip = "' + data.destination + '" ' +
                     'create (s1) -[:calls {context: "' + data.context + '", time: "' + data.time + '", latency: "' + data.latency +
                     '", uri: "' + data.uri + '", status: "' + data.status + '", method: "' + data.method + '"}]-> (s2)';
 
