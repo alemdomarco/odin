@@ -13,27 +13,9 @@ This is an open ended challenge, only requirement is mentioned above, use your i
 
 ## Main ideia long story short
 
-The main goal is getting microservices data using a reverse proxy as data source nginx in our case, 
+The main goal is getting microservices data using a reverse proxy as data source, nginx in our case.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Folder micro contains some micro services for test purposes only
 
 ## Nginx configuration
 
