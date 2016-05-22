@@ -26,7 +26,7 @@
                 handler: function (request, reply) {
                     let host = request.params.host;
                     serviceDependencyRepository.findAggDependenciesOfHost(host).then(function (response) {
-                        reply(serviceDependencyRepository.dataToGraph(response.data));
+                        reply(response);
                     });
                 }
             });

@@ -27,6 +27,32 @@
             expect(graph.edges[0].target).toBe("service4");
             
         });
+        
+        it("Testing data to front", function () {
+            
+            var data = {
+                columns: ['host1', 'host2', 'status', 'method', 'context', 'uri',  'latency', 'requestcount'],
+              
+                data:
+                [['service1', 'service4', 200, 'GET', 'follow', '/this/uri/is/fake', 0.9386, 3],
+                ['service1', 'service3', 200, 'GET', 'tracks', '/this/uri/is/fake', 0.7336, 10]]
+            }
+            
+            var result = serviceDependencyRepository.dataToFront(data);
+            
+            console.log(result);
+            
+            expect(result.length).toBe(2);
+            expect(result[0].source).toBe('service1');
+            expect(result[0].target).toBe('service4');
+            expect(result[0].status).toBe(200);
+            expect(result[0].method).toBe('GET');
+            expect(result[0].context).toBe('follow');
+            expect(result[0].uri).toBe('/this/uri/is/fake');
+            expect(result[0].latency).toBe(0.9386);
+            expect(result[0].requestcount).toBe(3);
+            
+        });
     });
 
 
