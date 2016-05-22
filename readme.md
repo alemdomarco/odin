@@ -29,4 +29,5 @@ access_log  logs/access-odin.log  odin;
 ## To run the application just follow the commands below:
 
 * npm install
-* node index.js
+* npm start
+* npm start nginx (to lookup nginx access_log)
