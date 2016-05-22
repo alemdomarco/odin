@@ -1,0 +1,207 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+        
+        <script src="sigma/sigma.min.js"></script>
+        <script src="sigma/plugins/sigma.parsers.json.min.js"></script>
+        <script src="sigma/plugins/sigma.parsers.gexf.min.js"></script>
+        <script src="sigma/plugins/sigma.layout.forceAtlas2.min.js"></script>
+        <script src="script/jquery-min.js"></script>
+        <script src="jquery-ui/jquery-ui.min.js"></script>
+        <script src="script/scripts.js"></script>
+    </head>
+    <body>
+        <div id="viewport">
+            <div id="container"></div>
+            <div class="header">
+                <div class="fields-align">
+                    <div class="fields" id="header-fields">
+                        <button id="orderNodes">Order Nodes</button>
+                        <input type="text" name="filter" id="filter">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        
+        // Add a method to the graph model that returns an
+        // object with every neighbors of a node inside:
+        sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+            var k,
+                neighbors = {},
+                index = this.allNeighborsIndex[nodeId] || {};
+        
+            for (k in index)
+                neighbors[k] = this.nodesIndex[k];
+            return neighbors;
+        });
+        
+        sigma.classes.graph.addMethod('goToNodes', function(nodes, camera){
+            var topLeftX = Number.MAX_VALUE,
+                topLeftY = Number.MAX_VALUE,
+                botRightX = Number.MIN_VALUE,
+                botRightY = Number.MIN_VALUE;
+            
+
+            $.each(nodes, function(index, item) {
+                if(item["read_cam0:x"] < topLeftX) {
+                    topLeftX = item["read_cam0:x"];
+                    
+                } if(item["read_cam0:x"] > botRightX) {
+                    botRightX = item["read_cam0:x"];
+                    
+                } if(item["read_cam0:y"] < topLeftY) {
+                    topLeftY = item["read_cam0:y"];
+                    
+                } if(item["read_cam0:y"] > botRightY) {
+                    botRightY = item["read_cam0:y"];
+                }
+            });
+            
+            return {
+                "topLeftX": topLeftX,
+                "topLeftY": topLeftY,
+                "botRightX": botRightX,
+                "botRightY": botRightY,
+                "centerX": (topLeftX+botRightX)/2,
+                "centerY": (topLeftY+botRightY)/2
+            };
+        });
+        
+        var sigmaGraph = sigma.parsers.json('data.json', {
+            renderer: {
+                container: document.getElementById('container'),
+                type: 'canvas'
+            },
+            settings: {
+                edgeLabelSize: 'proportional',
+                minEdgeSize: 1,
+                maxEdgeSize: 11,
+                minNodeSize: 14,
+                minNodeSize: 14,
+                defaultLabelColor: '#fff',
+                borderSize: 3,
+                defaultNodeBorderColor: '#fff'
+            }
+        }, function(s) {
+            
+            $('#filter').autocomplete({
+                source: s.graph.nodes(),
+                select: function( event, ui ) {
+                    var nodeId = ui.item.id,
+                        toKeep = s.graph.neighbors(nodeId);
+                    toKeep[nodeId] = ui.item;
+            
+                    s.graph.nodes().forEach(function(n) {
+                        if (toKeep[n.id])
+                            n.color = n.originalColor;
+                        else
+                            n.color = '#3a3e52';
+                    });
+            
+                    s.graph.edges().forEach(function(e) {
+                        if (toKeep[e.source] && toKeep[e.target])
+                            e.color = e.originalColor;
+                        else
+                            e.color = '#252a40';
+                    });
+                    
+                    var position = s.graph.goToNodes(toKeep, s.camera);
+                    s.camera.goTo({
+                        x: position.centerX,
+                        y: position.centerY
+                    });
+                    
+                    // Since the data has been modified, we need to
+                    // call the refresh method to make the colors
+                    // update effective.
+                    s.refresh();
+                }
+            });
+            
+            var startForceRunning = false;
+            $('#orderNodes').button();
+            $('#orderNodes').on('click', function(event, ui) {
+                if(!startForceRunning) {
+                    $('#orderNodes').button('option', 'label', 'Order Nodes');
+                    startForceRunning = true;
+                    s.startForceAtlas2();
+                } else {
+                    $('#orderNodes').button('option', 'label', 'stop Ordering');
+                    startForceRunning = false;
+                    s.stopForceAtlas2();
+                }
+            });
+        
+            var rangeVal = getRange(s);
+            drawRange(rangeVal.max, rangeVal.min);
+        
+            // We first need to save the original colors of our
+            // nodes and edges, like this:
+            s.graph.nodes().forEach(function(n) {
+                n.originalColor = n.color;
+            });
+        
+            s.graph.edges().forEach(function(e) {
+                e.originalColor = e.color;
+            });
+        
+            // When a node is clicked, we check for each node
+            // if it is a neighbor of the clicked one. If not,
+            // we set its color as grey, and else, it takes its
+            // original color.
+            // We do the same for the edges, and we only keep
+            // edges that have both extremities colored.
+            s.bind('clickNode', function(e) {
+                var nodeId = e.data.node.id,
+                    toKeep = s.graph.neighbors(nodeId);
+                toKeep[nodeId] = e.data.node;
+        
+                s.graph.nodes().forEach(function(n) {
+                    if (toKeep[n.id])
+                        n.color = n.originalColor;
+                    else
+                        n.color = '#3a3e52';
+                });
+        
+                s.graph.edges().forEach(function(e) {
+                    if (toKeep[e.source] && toKeep[e.target])
+                        e.color = e.originalColor;
+                    else
+                        e.color = '#252a40';
+                });
+                
+                var position = s.graph.goToNodes(toKeep, s.camera);
+                s.camera.goTo({
+                    x: position.centerX,
+                    y: position.centerY
+                });
+                
+                // Since the data has been modified, we need to
+                // call the refresh method to make the colors
+                // update effective.
+                s.refresh();
+            });
+        
+            // When the stage is clicked, we just color each
+            // node and edge with its original color.
+            s.bind('clickStage', function(e) {
+                s.graph.nodes().forEach(function(n) {
+                    n.color = n.originalColor;
+                });
+        
+                s.graph.edges().forEach(function(e) {
+                    e.color = e.originalColor;
+                });
+        
+                // Same as in the previous event:
+                s.refresh();
+            });
+        });
+    });
+</script>

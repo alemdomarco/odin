@@ -1,0 +1,604 @@
+{
+    "nodes": [{
+        "id": "n0",
+        "label": "Node 0",
+        "x": 0.8919456213099113,
+        "y": 0.8966544976769917,
+        "size": 0.3415383020650984,
+        "color": "#9fe584"
+    }, {
+        "id": "n1",
+        "label": "Node 1",
+        "x": 0.8569973569149516,
+        "y": 0.7203393442327619,
+        "size": 0.7602357020221187,
+        "color": "#9fe584"
+    }, {
+        "id": "n2",
+        "label": "Node 2",
+        "x": 0.6690232374538987,
+        "y": 0.19075387858302761,
+        "size": 0.8857607417681801,
+        "color": "#9fe584"
+    }, {
+        "id": "n3",
+        "label": "Node 3",
+        "x": 0.1941333298674921,
+        "y": 0.02541946141772855,
+        "size": 0.37159926406443233,
+        "color": "#9fe584"
+    }, {
+        "id": "n4",
+        "label": "Node 4",
+        "x": 0.22015445723156835,
+        "y": 0.29913528562539904,
+        "size": 0.5297204065465788,
+        "color": "#9fe584"
+    }, {
+        "id": "n5",
+        "label": "Node 5",
+        "x": 0.89921635400172,
+        "y": 0.48803834907179877,
+        "size": 0.06105081048747785,
+        "color": "#9fe584"
+    }, {
+        "id": "n6",
+        "label": "Node 6",
+        "x": 0.20695037935586913,
+        "y": 0.9630570593056893,
+        "size": 0.36293313732876986,
+        "color": "#9fe584"
+    }, {
+        "id": "n7",
+        "label": "Node 7",
+        "x": 0.7499768731302632,
+        "y": 0.5655834312268482,
+        "size": 0.811235672532957,
+        "color": "#9fe584"
+    }, {
+        "id": "n8",
+        "label": "Node 8",
+        "x": 0.6930340104212431,
+        "y": 0.8355412606941872,
+        "size": 0.2669473555052453,
+        "color": "#9fe584"
+    }, {
+        "id": "n9",
+        "label": "Node 9",
+        "x": 0.02412856981406386,
+        "y": 0.47358996869162184,
+        "size": 0.3346769195376955,
+        "color": "#9fe584"
+    }, {
+        "id": "n10",
+        "label": "Node 10",
+        "x": 0.2450797092554593,
+        "y": 0.4223778688863382,
+        "size": 0.31517352560112144,
+        "color": "#9fe584"
+    }, {
+        "id": "n11",
+        "label": "Node 11",
+        "x": 0.2699589213844269,
+        "y": 0.6274040185420366,
+        "size": 0.7945643778351317,
+        "color": "#9fe584"
+    }, {
+        "id": "n12",
+        "label": "Node 12",
+        "x": 0.2749944122332768,
+        "y": 0.37261649900418115,
+        "size": 0.01652468211774849,
+        "color": "#9fe584"
+    }, {
+        "id": "n13",
+        "label": "Node 13",
+        "x": 0.8800430539426867,
+        "y": 0.7728284573594177,
+        "size": 0.1178167399098855,
+        "color": "#9fe584"
+    }, {
+        "id": "n14",
+        "label": "Node 14",
+        "x": 0.32543260913483363,
+        "y": 0.6878805256075897,
+        "size": 0.010330346702309257,
+        "color": "#9fe584"
+    }, {
+        "id": "n15",
+        "label": "Node 15",
+        "x": 0.23550105770241325,
+        "y": 0.5226734752359767,
+        "size": 0.10021106470457286,
+        "color": "#9fe584"
+    }, {
+        "id": "n16",
+        "label": "Node 16",
+        "x": 0.6020181934748168,
+        "y": 0.34633148640150435,
+        "size": 0.3762907948764622,
+        "color": "#9fe584"
+    }, {
+        "id": "n17",
+        "label": "Node 17",
+        "x": 0.21724582560241634,
+        "y": 0.8094038301532438,
+        "size": 0.6696050822683215,
+        "color": "#9fe584"
+    }, {
+        "id": "n18",
+        "label": "Node 18",
+        "x": 0.29228712232148046,
+        "y": 0.1802662997973401,
+        "size": 0.923473476153315,
+        "color": "#9fe584"
+    }, {
+        "id": "n19",
+        "label": "Node 19",
+        "x": 0.07204611181014342,
+        "y": 0.16367782790997265,
+        "size": 0.7715003710279074,
+        "color": "#9fe584"
+    }, {
+        "id": "n20",
+        "label": "Node 20",
+        "x": 0.5087530789267096,
+        "y": 0.5405704790381141,
+        "size": 0.19980947973214835,
+        "color": "#9fe584"
+    }, {
+        "id": "n21",
+        "label": "Node 21",
+        "x": 0.20352111265248607,
+        "y": 0.1276466855218974,
+        "size": 0.62253107425901,
+        "color": "#9fe584"
+    }, {
+        "id": "n22",
+        "label": "Node 22",
+        "x": 0.48634651675088714,
+        "y": 0.7146403997480333,
+        "size": 0.4973889889700931,
+        "color": "#9fe584"
+    }, {
+        "id": "n23",
+        "label": "Node 23",
+        "x": 0.6112637582617511,
+        "y": 0.3842320699147663,
+        "size": 0.7172029975381786,
+        "color": "#9fe584"
+    }, {
+        "id": "n24",
+        "label": "Node 24",
+        "x": 0.6060892657415238,
+        "y": 0.7140960956233917,
+        "size": 0.4111544774617333,
+        "color": "#9fe584"
+    }, {
+        "id": "n25",
+        "label": "Node 25",
+        "x": 0.7844414252152836,
+        "y": 0.704098086495361,
+        "size": 0.5222509020343642,
+        "color": "#9fe584"
+    }, {
+        "id": "n26",
+        "label": "Node 26",
+        "x": 0.009051663634285001,
+        "y": 0.38268826970706726,
+        "size": 0.7498528502568531,
+        "color": "#9fe584"
+    }, {
+        "id": "n27",
+        "label": "Node 27",
+        "x": 0.9868119319141642,
+        "y": 0.6205198168411612,
+        "size": 0.9087987597414129,
+        "color": "#9fe584"
+    }, {
+        "id": "n28",
+        "label": "Node 28",
+        "x": 0.7683347557513107,
+        "y": 0.4269932971214294,
+        "size": 0.43510465875001625,
+        "color": "#9fe584"
+    }, {
+        "id": "n29",
+        "label": "Node 29",
+        "x": 0.5938334942900396,
+        "y": 0.45720710115205354,
+        "size": 0.3906595395925301,
+        "color": "#9fe584"
+    }, {
+        "id": "n30",
+        "label": "Node 30",
+        "x": 0.8387527339370204,
+        "y": 0.17487719426203574,
+        "size": 0.7067976579264805,
+        "color": "#9fe584"
+    }, {
+        "id": "n31",
+        "label": "Node 31",
+        "x": 0.25395046056203574,
+        "y": 0.02464545618452396,
+        "size": 0.6532445154446134,
+        "color": "#9fe584"
+    }, {
+        "id": "n32",
+        "label": "Node 32",
+        "x": 0.4389208339736512,
+        "y": 0.6079428877780815,
+        "size": 0.8578044001703289,
+        "color": "#9fe584"
+    }, {
+        "id": "n33",
+        "label": "Node 33",
+        "x": 0.6673769821277387,
+        "y": 0.5767872771196703,
+        "size": 0.768927822319651,
+        "color": "#9fe584"
+    }, {
+        "id": "n34",
+        "label": "Node 34",
+        "x": 0.7772714390096604,
+        "y": 0.059468483269898176,
+        "size": 0.852855930438478,
+        "color": "#9fe584"
+    }, {
+        "id": "n35",
+        "label": "Node 35",
+        "x": 0.002667313363940993,
+        "y": 0.2162579222726999,
+        "size": 0.11803147419389681,
+        "color": "#9fe584"
+    }, {
+        "id": "n36",
+        "label": "Node 36",
+        "x": 0.6923869711767128,
+        "y": 0.2957574666606082,
+        "size": 0.9779773605076427,
+        "color": "#9fe584"
+    }, {
+        "id": "n37",
+        "label": "Node 37",
+        "x": 0.22422837850497412,
+        "y": 0.5324634657874221,
+        "size": 0.2579305707104935,
+        "color": "#9fe584"
+    }, {
+        "id": "n38",
+        "label": "Node 38",
+        "x": 0.9161075077757066,
+        "y": 0.07169856875665515,
+        "size": 0.4332593250829324,
+        "color": "#9fe584"
+    }, {
+        "id": "n39",
+        "label": "Node 39",
+        "x": 0.27627204901710645,
+        "y": 0.6061529205546432,
+        "size": 0.15269627525938412,
+        "color": "#9fe584"
+    }],
+    "edges": [{
+        "id": "e0",
+        "label": "Edge 0",
+        "source": "n14",
+        "target": "n4",
+        "size": 8,
+        "color": "rgb(202,0,52)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e1",
+        "label": "Edge 1",
+        "source": "n23",
+        "target": "n9",
+        "size": 5,
+        "color": "rgb(226,0,28)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e2",
+        "label": "Edge 2",
+        "source": "n2",
+        "target": "n32",
+        "size": 9,
+        "color": "rgb(165,0,89)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e3",
+        "label": "Edge 3",
+        "source": "n15",
+        "target": "n12",
+        "size": 10,
+        "color": "rgb(5,0,249)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e4",
+        "label": "Edge 4",
+        "source": "n29",
+        "target": "n4",
+        "size": 1,
+        "color": "rgb(22,0,232)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e5",
+        "label": "Edge 5",
+        "source": "n2",
+        "target": "n38",
+        "size": 8,
+        "color": "rgb(254,0,0)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e6",
+        "label": "Edge 6",
+        "source": "n32",
+        "target": "n10",
+        "size": 7,
+        "color": "rgb(222,0,32)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e7",
+        "label": "Edge 7",
+        "source": "n22",
+        "target": "n30",
+        "size": 10,
+        "color": "rgb(106,0,148)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e8",
+        "label": "Edge 8",
+        "source": "n9",
+        "target": "n3",
+        "size": 9,
+        "color": "rgb(199,0,55)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e9",
+        "label": "Edge 9",
+        "source": "n12",
+        "target": "n36",
+        "size": 7,
+        "color": "rgb(58,0,196)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e10",
+        "label": "Edge 10",
+        "source": "n25",
+        "target": "n37",
+        "size": 8,
+        "color": "rgb(18,0,236)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e11",
+        "label": "Edge 11",
+        "source": "n33",
+        "target": "n6",
+        "size": 8,
+        "color": "rgb(252,0,2)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e12",
+        "label": "Edge 12",
+        "source": "n13",
+        "target": "n13",
+        "size": 5,
+        "color": "rgb(197,0,57)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e13",
+        "label": "Edge 13",
+        "source": "n2",
+        "target": "n34",
+        "size": 1,
+        "color": "rgb(17,0,237)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e14",
+        "label": "Edge 14",
+        "source": "n32",
+        "target": "n27",
+        "size": 9,
+        "color": "rgb(44,0,210)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e15",
+        "label": "Edge 15",
+        "source": "n39",
+        "target": "n8",
+        "size": 7,
+        "color": "rgb(82,0,172)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e16",
+        "label": "Edge 16",
+        "source": "n1",
+        "target": "n5",
+        "size": 5,
+        "color": "rgb(139,0,115)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e17",
+        "label": "Edge 17",
+        "source": "n18",
+        "target": "n30",
+        "size": 2,
+        "color": "rgb(87,0,167)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e18",
+        "label": "Edge 18",
+        "source": "n14",
+        "target": "n17",
+        "size": 8,
+        "color": "rgb(95,0,159)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e19",
+        "label": "Edge 19",
+        "source": "n32",
+        "target": "n20",
+        "size": 7,
+        "color": "rgb(67,0,187)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e20",
+        "label": "Edge 20",
+        "source": "n11",
+        "target": "n31",
+        "size": 6,
+        "color": "rgb(140,0,114)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e21",
+        "label": "Edge 21",
+        "source": "n18",
+        "target": "n29",
+        "size": 7,
+        "color": "rgb(232,0,22)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e22",
+        "label": "Edge 22",
+        "source": "n0",
+        "target": "n20",
+        "size": 4,
+        "color": "rgb(123,0,131)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e23",
+        "label": "Edge 23",
+        "source": "n23",
+        "target": "n2",
+        "size": 6,
+        "color": "rgb(245,0,9)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e24",
+        "label": "Edge 24",
+        "source": "n36",
+        "target": "n29",
+        "size": 5,
+        "color": "rgb(184,0,70)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e25",
+        "label": "Edge 25",
+        "source": "n7",
+        "target": "n7",
+        "size": 7,
+        "color": "rgb(18,0,236)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e26",
+        "label": "Edge 26",
+        "source": "n36",
+        "target": "n1",
+        "size": 8,
+        "color": "rgb(247,0,7)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e27",
+        "label": "Edge 27",
+        "source": "n16",
+        "target": "n12",
+        "size": 1,
+        "color": "rgb(6,0,248)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e28",
+        "label": "Edge 28",
+        "source": "n0",
+        "target": "n1",
+        "size": 8,
+        "color": "rgb(85,0,169)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e29",
+        "label": "Edge 29",
+        "source": "n27",
+        "target": "n23",
+        "size": 10,
+        "color": "rgb(39,0,215)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e30",
+        "label": "Edge 30",
+        "source": "n5",
+        "target": "n12",
+        "size": 3,
+        "color": "rgb(74,0,180)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e31",
+        "label": "Edge 31",
+        "source": "n5",
+        "target": "n12",
+        "size": 9,
+        "color": "rgb(38,0,216)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e32",
+        "label": "Edge 32",
+        "source": "n21",
+        "target": "n20",
+        "size": 3,
+        "color": "rgb(213,0,41)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e33",
+        "label": "Edge 33",
+        "source": "n15",
+        "target": "n33",
+        "size": 5,
+        "color": "rgb(187,0,67)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e34",
+        "label": "Edge 34",
+        "source": "n32",
+        "target": "n28",
+        "size": 3,
+        "color": "rgb(37,0,217)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e35",
+        "label": "Edge 35",
+        "source": "n35",
+        "target": "n39",
+        "size": 4,
+        "color": "rgb(219,0,35)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e36",
+        "label": "Edge 36",
+        "source": "n3",
+        "target": "n38",
+        "size": 6,
+        "color": "rgb(245,0,9)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e37",
+        "label": "Edge 37",
+        "source": "n28",
+        "target": "n33",
+        "size": 1,
+        "color": "rgb(21,0,233)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e38",
+        "label": "Edge 38",
+        "source": "n30",
+        "target": "n23",
+        "size": 1,
+        "color": "rgb(136,0,118)",
+        "type": "curvedArrow"
+    }, {
+        "id": "e39",
+        "label": "Edge 39",
+        "source": "n33",
+        "target": "n13",
+        "size": 1,
+        "color": "rgb(231,0,23)",
+        "type": "curvedArrow"
+    }]
+}

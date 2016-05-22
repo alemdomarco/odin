@@ -9,11 +9,42 @@ Imagine 100s of microserivces calling each other on different API endpoints usin
 
 This is an open ended challenge, only requirement is mentioned above, use your imagination and do whatever you need to solve the problem mentioned
 
+
+
+## Main ideia long story short
+
+The main goal is getting microservices data using a reverse proxy as data source nginx in our case, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Folder micro contains some micro services for test purposes only
 
-# To install zmq - need to execute this before npm install on producer folder.
-Get the last version: http://zeromq.org/intro:get-the-software
-run ./configure --without-libsodium
-run make
-run sudo make install
+## Nginx configuration
 
+# You need to add this log_format for access log:
+log_format  odin  '{ "bytes": "$bytes_sent", "port": "$proxy_port", "remote":"$remote_addr", "accepter": "$server_addr:$proxy_port" ,"requesturi":"$request_uri", "user": "$remote_user", "timeiso": "$time_iso8601", "status": "$status", "requesttime": "$request_time", "querystring": "$query_string", "method": "$request_method"} ';
+
+# Enable accesslog on nginx
+access_log  logs/access-odin.log  odin;
+
+
+## To run the application just follow the commands below:
+
+* npm install
+* node index.js
